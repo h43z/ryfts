@@ -6,8 +6,9 @@ chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById('share').onclick = function(){
+		var backend = "here backend adress";
 		var msg = document.getElementById("msg").value;
-		var apiurl = "http://localhost/shareit/?api=add&url="+ encodeURIComponent(url)+"&msg="+msg;
+		var apiurl = backend + "/?api=add&url=" + encodeURIComponent(url) + "&msg="+msg;
         	var xhReq = new XMLHttpRequest();
         	xhReq.open("POST",apiurl.split("?")[0], false);
         	xhReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
