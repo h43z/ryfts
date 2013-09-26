@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
         	xhReq.open("POST",apiurl.split("?")[0], false);
         	xhReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         	xhReq.send(apiurl.substr(apiurl.indexOf("?")+1));
-       		var serverResponse = xhReq.responseText;
+       		var res = xhReq.responseText;
+		if(!res){
+			alert(res);
+		}
 		window.close();
 	}
 });
