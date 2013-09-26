@@ -5,6 +5,9 @@ if($api == "add"){
 	if(isset($_REQUEST["url"]) && isset($_REQUEST["msg"]) /* && isset($_REQUEST["id"]) && isset($_REQUEST["pass"])*/){
 		
 		$url = htmlspecialchars($_REQUEST["url"]);
+		if(empty($_COOKIE["privateid"])){
+			die("You are not logged in");	
+		}
 		$parts = explode("_",$_COOKIE["privateid"]);
 		$id = $parts[0];
 		if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
@@ -104,7 +107,9 @@ if($api == "add"){
 	echo ". If you already have an account you can login with /?api=login&id=NAME&pass=PASSWORD<br>";
 	echo ". You can get the rss of an user making a request with /?api=get&id=NAME&format=rss<br>";
 	echo ". Alternatively you can get a jsonp response with /?api=get&id=NAME&jsonp=CALLBACK<br>"; 
-	echo ". You can add new items to your storage with /?api=add&url=URL&msg=YOURMSG<br>";
+	echo ". You can add new items to your storage with /?api=add&url=URL&msg=YOURMSG<br><br>";
+	echo ". Chrome Extension: <a href="./../extension/extension.crx">download</a>;
+
 }
 
 ?>
