@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         	xhReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         	xhReq.send(apiurl.substr(apiurl.indexOf("?")+1));
        		var res = xhReq.responseText;
-		if(!res){
+		if(res){
 			alert(res);
 		}
 		window.close();
