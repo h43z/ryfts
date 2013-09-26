@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
         	xhReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         	xhReq.send(apiurl.substr(apiurl.indexOf("?")+1));
        		var res = xhReq.responseText;
-		if(res){
+		var bkg = chrome.extension.getBackgroundPage();
+		bkg.console.log(res);
+		if(res.length !== 0){
 			alert(res);
 		}
 		window.close();
