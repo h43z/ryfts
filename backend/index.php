@@ -108,7 +108,7 @@ if($api == "add"){
 	echo ". You can get the rss of an user making a request with /?api=get&id=NAME&format=rss<br>";
 	echo ". Alternatively you can get a jsonp response with /?api=get&id=NAME&jsonp=CALLBACK<br>"; 
 	echo ". You can add new items to your storage with /?api=add&url=URL&msg=YOURMSG<br><br>";
-	echo ". Chrome Extension: <a href='./../extension/extension.crx'>download</a>;
+	echo ". Chrome Extension: <a href='./../extension/extension.crx'>download</a>";
 
 }
 
