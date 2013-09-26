@@ -26,7 +26,6 @@ if($api == "add"){
 			die("Wrong credentials");
 		}
 		file_put_contents($userdata.$privateid,$str."\n", FILE_APPEND);
-		echo $str;
 	}
 }elseif($api == "get"){
 	if(isset($_REQUEST["id"])){
