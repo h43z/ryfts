@@ -57,16 +57,16 @@ if($api == "add"){
 			$xml->addAttribute("version", "2.0");
 			$channel = $xml->addChild("channel");
 			$channel->addChild("title", "RSS feed of $id");
-			$channel->addChild("link", "Your website's uri");
-			$channel->addChild("description", "Created by shareit");
+			$channel->addChild("description", "Created with ryfts");
 			foreach ($privatefile as $line) {
     				$obj = json_decode($line);
 				$item = $channel->addChild("item"); 
     				$item->addChild("title", $id." says: ".$obj->{"msg"});
     				$item->addChild("link", $obj->{"url"});
-    				$item->addChild("description", "blubblub");
+    				$item->addChild("description", $id." recommends, ".$obj->{"url"});
 				
 			}
+			header('Content-type: text/xml');
 			echo $xml->asXML();
 		}
 	}
