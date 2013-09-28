@@ -2,7 +2,7 @@
 $userdata = "./userdata/";
 $api = $_REQUEST["api"];
 if($api == "add"){
-	if(isset($_REQUEST["url"]) && isset($_REQUEST["msg"]) /* && isset($_REQUEST["id"]) && isset($_REQUEST["pass"])*/){
+	if(isset($_REQUEST["url"]) && isset($_REQUEST["msg"])){
 		
 		$url = htmlspecialchars($_REQUEST["url"]);
 		if(empty($_COOKIE["privateid"])){
@@ -61,7 +61,7 @@ if($api == "add"){
 			foreach ($privatefile as $line) {
     				$obj = json_decode($line);
 				$item = $channel->addChild("item"); 
-    				$item->addChild("title", $id." says: ".$obj->{"msg"});
+    				$item->addChild("title", $id.": ".$obj->{"msg"});
     				$item->addChild("link", $obj->{"url"});
     				$item->addChild("description", $id." recommends, ".$obj->{"url"});
 				
