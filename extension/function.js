@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 	document.getElementById('share').onclick = function(){
-		var api = "api address here";
+		var api = "api here";
 		var msg = document.getElementById("msg").value;
 		chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
    			function(tabs){
@@ -21,7 +21,7 @@ function post(api,url, msg){
 	req.open("POST",api, true);
 	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	req.onload = function(){
-			if(this.response.length !== 0){
+			if(this.response.length > 1){
 				alert(this.response);
 			}
 			window.close();
