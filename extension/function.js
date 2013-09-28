@@ -1,26 +1,30 @@
-
-chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
-   function(tabs){
-	url = tabs[0].url;
-});
-
 document.addEventListener('DOMContentLoaded', function () {
+	chrome.tabs.getSelected(null,function(tab) { // null defaults to current window
+  		var title = tab.title;
+		document.getElementById("msg").value = title;
+	});
+
+
 	document.getElementById('share').onclick = function(){
-		var backend = "here backend adress";
+		var api = "api address here";
 		var msg = document.getElementById("msg").value;
-		var apiurl = backend + "/?api=add&url=" + encodeURIComponent(url) + "&msg="+msg;
-        	var xhReq = new XMLHttpRequest();
-        	xhReq.open("POST",apiurl.split("?")[0], false);
-        	xhReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        	xhReq.send(apiurl.substr(apiurl.indexOf("?")+1));
-       		var res = xhReq.responseText;
-		if(res.length !== 0){
-			alert(res);
-		}
-		window.close();
+		chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
+   			function(tabs){
+				url = tabs[0].url;	
+				post(api,url,msg);
+			});
 	}
 });
 
-
-
-
+function post(api,url, msg){
+	var req = new XMLHttpRequest();
+	req.open("POST",api, true);
+	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	req.onload = function(){
+			if(this.response.length !== 0){
+				alert(this.response);
+			}
+			window.close();
+		};
+	req.send("api=add&url=" + encodeURIComponent(url) + "&msg="+encodeURIComponent(msg));
+}

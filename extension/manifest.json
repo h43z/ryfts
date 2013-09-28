@@ -10,6 +10,6 @@
 "default_popup":"popup.html"
 },
 
-"permissions": [ "tabs","http://*/" ]
+"permissions": [ "tabs","http://199.180.251.57/ryfts/" ]
 
 }
